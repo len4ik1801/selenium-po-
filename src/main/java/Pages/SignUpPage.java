@@ -3,8 +3,9 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class SignUpPage {
-    WebDriver driver;
+public class SignUpPage extends HeaderForAllPages {
+    private  WebDriver driver;
+
     By nameField = By.xpath("//div/input[@name = 'title']");
     By emailField = By.xpath("//div/input[@name = 'login']");
     By passwordField = By.xpath("//div/input[@name = 'password']");
@@ -12,8 +13,9 @@ public class SignUpPage {
     By headingReg = By.xpath("*//div[@class = 'signup']/h1");
 
     public SignUpPage(WebDriver driver){
-
+        super(driver);
         this.driver = driver;
+
     }
     public SignUpPage typeName(String name){
         driver.findElement(nameField).sendKeys(name);

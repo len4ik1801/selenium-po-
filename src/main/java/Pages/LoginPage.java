@@ -14,7 +14,9 @@ public class LoginPage {
 
 
     public LoginPage (WebDriver driver){
+//        super(driver);
         this.driver = driver;
+
     }
 
 
@@ -30,6 +32,7 @@ public class LoginPage {
         driver.findElement(loginBtn).click();
         return this;
     }
+
     public LoginPage clickCancelLink(){
         driver.findElement(cancelLink).click();
         return this;

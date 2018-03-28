@@ -1,5 +1,6 @@
 package Tests;
 
+import Pages.HeaderForAllPages;
 import Pages.HomePage;
 import Pages.LoginPage;
 import org.openqa.selenium.WebDriver;
@@ -12,21 +13,29 @@ import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 
 public class LoginTest extends MainClass {
-    private WebDriver driver;
+
 
 
     @Test(priority = 0)
     public void openLoginPopUp(){
+        HeaderForAllPages headerForAllPages = new HeaderForAllPages(driver);
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
-        homePage.clickSignBtn();
-        loginPage.typeName("lenok1@appcreative.net");
+        headerForAllPages.clickProfileLink();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        String windowHandler = driver.getWindowHandle();
+        headerForAllPages.enterEmailForLogin("lenok1@appcreative.net");
+        headerForAllPages.enterPasswordForLogin("123Qwerty");
+        headerForAllPages.clickLoginBtn();
+        /*loginPage.typeName("lenok1@appcreative.net");
         loginPage.typePassword("123Qwerty");
         loginPage.clickLoginBtn();
-        String profileLink = loginPage.getProfileLink();
-        Assert.assertEquals(profileLink, "Lenok1");
+        String profileLink = loginPage.getProfileLink();*/
+
+        Assert.assertEquals(homePage, "Lenok1");
 
     }
+
 
 
 }

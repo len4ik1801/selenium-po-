@@ -8,7 +8,7 @@ import org.testng.annotations.BeforeTest;
 import java.util.concurrent.TimeUnit;
 
 public class MainClass {
-    private WebDriver driver;
+    public WebDriver driver;
 
     @BeforeTest
     public void setUp(){
@@ -18,7 +18,8 @@ public class MainClass {
         driver.get("https://rozetka.com.ua/");
     }
     @AfterTest
-    public void tearDown(){
+    public void tearDown() throws InterruptedException {
+        Thread.sleep(5000);
 
         driver.quit();
         driver = null;
